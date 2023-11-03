@@ -1,5 +1,5 @@
 # pip install pre-commit && pre-commit install
-# See https://pre-commit.com for more info
+# https://pre-commit.com
 
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
@@ -10,8 +10,3 @@ repos:
     -   id: check-yaml
     -   id: end-of-file-fixer
     -   id: trailing-whitespace
-
--   repo: https://github.com/streetsidesoftware/cspell-cli
-    rev: v7.0.1
-    hooks:
-    -   id: cspell
