@@ -33,6 +33,9 @@ jobs:
           MD_FILE_NO_EXTENSION=${MD_FILE%.md}
           echo "OUTPUT_PDF=$(echo $MD_FILE_NO_EXTENSION.pdf)" >> $GITHUB_ENV
 
+      - name: MD to PDF with pandoc
+        run: pandoc ${{ env.MD_FILE }} -o ${{ env.OUTPUT_PDF }}
+
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
