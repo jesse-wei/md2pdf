@@ -5,6 +5,8 @@ date: November 3, 2023
 geometry: margin=2.54cm
 ---
 
+This README.md is automatically converted to a LaTeX-like PDF via Pandoc. See the Actions tab on GitHub.
+
 # h1 Heading 8-)
 ## h2 Heading
 ### h3 Heading

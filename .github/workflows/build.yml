@@ -5,9 +5,6 @@ on:
   push:
   pull_request:
 
-env:
-  MD_FILE: README.md
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -27,17 +24,15 @@ jobs:
           texlive-fonts-extra
           texlive-latex-extra
 
-      - name: Get PDF name
-        run: |
-          MD_FILE=${{ env.MD_FILE }}
-          MD_FILE_NO_EXTENSION=${MD_FILE%.md}
-          echo "OUTPUT_PDF=$(echo $MD_FILE_NO_EXTENSION.pdf)" >> $GITHUB_ENV
-
       - name: MD to PDF with pandoc
-        run: pandoc ${{ env.MD_FILE }} -o ${{ env.OUTPUT_PDF }}
+        run: |
+          for i in `find . -name "*.md" -type f`; do
+            echo "$i"
+            pandoc "$i" -o "${i%.md}.pdf"
+          done
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
           name: ${{ github.event.repository.name }}
-          path: ${{ env.OUTPUT_PDF }}
+          path: "**/*.pdf"
