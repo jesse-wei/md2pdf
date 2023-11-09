@@ -27,7 +27,6 @@ jobs:
       - name: MD to PDF with pandoc
         run: |
           for i in `find . -name "*.md" -type f`; do
-            echo "$i"
             pandoc "$i" -o "${i%.md}.pdf"
           done
 
